@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="16dp"
+    android:background="@color/surface"
+    android:layout_marginBottom="1dp">
+
+    <!-- 日期 -->
+    <TextView
+        android:id="@+id/tv_forecast_date"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_primary"
+        android:textSize="14sp"
+        tools:text="周一"
+        xmlns:tools="http://schemas.android.com/tools" />
+
+    <!-- 天气图标 -->
+    <ImageView
+        android:id="@+id/iv_forecast_icon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="天气图标"
+        android:src="@drawable/ic_weather_unknown" />
+
+    <!-- 天气状况 -->
+    <TextView
+        android:id="@+id/tv_forecast_condition"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="12dp"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
+        tools:text="晴"
+        xmlns:tools="http://schemas.android.com/tools" />
+
+    <!-- 最低温 -->
+    <TextView
+        android:id="@+id/tv_forecast_min_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_hint"
+        android:textSize="14sp"
+        tools:text="15°"
+        xmlns:tools="http://schemas.android.com/tools" />
+
+    <!-- 分隔 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        android:text="/"
+        android:textColor="@color/text_hint"
+        android:textSize="14sp" />
+
+    <!-- 最高温 -->
+    <TextView
+        android:id="@+id/tv_forecast_max_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_primary"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:text="25°"
+        xmlns:tools="http://schemas.android.com/tools" />
+
+</LinearLayout>

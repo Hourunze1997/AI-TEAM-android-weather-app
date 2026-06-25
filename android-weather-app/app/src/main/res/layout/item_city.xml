@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="16dp"
+    android:background="@color/surface"
+    android:layout_marginBottom="1dp">
+
+    <!-- 默认城市标记 -->
+    <ImageView
+        android:id="@+id/iv_city_default"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="默认城市"
+        android:src="@android:drawable/btn_star_big_on"
+        android:tint="@color/primary"
+        android:visibility="gone" />
+
+    <!-- 城市信息 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_city_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="北京"
+            xmlns:tools="http://schemas.android.com/tools" />
+
+        <TextView
+            android:id="@+id/tv_city_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/text_hint"
+            android:textSize="12sp"
+            tools:text="CN · 39.90, 116.40"
+            xmlns:tools="http://schemas.android.com/tools" />
+    </LinearLayout>
+
+    <!-- 删除按钮 -->
+    <ImageButton
+        android:id="@+id/iv_city_delete"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_menu_delete"
+        android:contentDescription="删除"
+        android:tint="@color/error"
+        android:visibility="gone" />
+
+</LinearLayout>
