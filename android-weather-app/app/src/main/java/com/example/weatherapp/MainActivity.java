@@ -200,9 +200,9 @@ public class MainActivity extends AppCompatActivity {
                         && Math.abs(diffX) > SWIPE_THRESHOLD
                         && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
                     if (diffX > 0) {
-                        switchCity(currentCityIndex + 1);
-                    } else {
                         switchCity(currentCityIndex - 1);
+                    } else {
+                        switchCity(currentCityIndex + 1);
                     }
                     return true;
                 }
