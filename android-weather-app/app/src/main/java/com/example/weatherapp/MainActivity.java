@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private LinearLayout layoutWeatherInfo;
     private SwipeRefreshLayout swipeRefresh;
+    private ScrollView scrollView;
     private RecyclerView rvForecast;
     private TextView tvEmptyState;
     private TextView tvPageIndicator;
@@ -130,8 +132,7 @@ public class MainActivity extends AppCompatActivity {
         initViews();
         setupForecastRecyclerView();
         setupGestureDetector();
-        setupListeners();
-        loadCitiesFromStorage();
+        setupListeners();        loadCitiesFromStorage();
 
         if (cityList.isEmpty()) {
             showEmptyState();
@@ -154,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progress_bar);
         layoutWeatherInfo = findViewById(R.id.layout_weather_info);
         swipeRefresh = findViewById(R.id.swipe_refresh);
+        scrollView = findViewById(R.id.scroll_view);
         rvForecast = findViewById(R.id.rv_forecast);
         tvEmptyState = findViewById(R.id.tv_empty_state);
         tvPageIndicator = findViewById(R.id.tv_page_indicator);
@@ -176,22 +178,32 @@ public class MainActivity extends AppCompatActivity {
             private static final int SWIPE_VELOCITY_THRESHOLD = 100;
 
             @Override
+            public boolean onDown(MotionEvent e) {
+                return true;
+            }
+
+            @Override
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
                 if (e1 == null || e2 == null) return false;
                 float diffX = e2.getX() - e1.getX();
-                if (Math.abs(diffX) > SWIPE_THRESHOLD
+                float diffY = e2.getY() - e1.getY();
+                if (Math.abs(diffX) > Math.abs(diffY)
+                        && Math.abs(diffX) > SWIPE_THRESHOLD
                         && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
                     if (diffX > 0) {
-                        // 向右滑 -> 上一个城市
                         switchCity(currentCityIndex - 1);
                     } else {
-                        // 向左滑 -> 下一个城市
                         switchCity(currentCityIndex + 1);
                     }
                     return true;
                 }
                 return false;
             }
+        });
+
+        scrollView.setOnTouchListener((v, event) -> {
+            gestureDetector.onTouchEvent(event);
+            return false;
         });
     }
 
