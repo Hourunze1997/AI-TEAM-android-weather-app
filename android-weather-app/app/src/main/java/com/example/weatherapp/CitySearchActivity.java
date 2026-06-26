@@ -82,6 +82,8 @@ public class CitySearchActivity extends AppCompatActivity
         tvNoResults = findViewById(R.id.tv_no_results);
         tvHint = findViewById(R.id.tv_hint);
 
+        findViewById(R.id.btn_back).setOnClickListener(v -> finish());
+
         adapter = new CityListAdapter(this, false);
         rvResults.setLayoutManager(new LinearLayoutManager(this));
         rvResults.setAdapter(adapter);
